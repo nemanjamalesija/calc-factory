@@ -1,24 +1,45 @@
 import "./style.css";
 
+const btns = document.querySelectorAll(".btn__number");
+const outputMain = document.querySelector(".output-main");
+
 const CalcFactory = () => {
   return {
-    firstOperand: 0,
-    secondOperand: 0,
+    firstOperand: "",
+    secondOperand: "",
 
-    add() {
-      return this.firstOperand + this.secondOperand;
+    populateDOM(el: HTMLDivElement) {
+      el.textContent = this.firstOperand;
     },
 
-    subtract() {
-      return this.firstOperand - this.secondOperand;
+    updateFirstOperand(val: String) {
+      this.firstOperand += Number(val);
     },
 
-    muiltiply() {
-      return this.firstOperand + this.secondOperand;
+    add(a: number, b: number) {
+      return a + b;
     },
 
-    divide() {
-      return this.firstOperand / this.secondOperand;
+    subtract(a: number, b: number) {
+      return a - b;
+    },
+
+    muiltiply(a: number, b: number) {
+      return a + b;
+    },
+
+    divide(a: number, b: number) {
+      return a / b;
     },
   };
 };
+
+const calculator = CalcFactory();
+
+btns.forEach((el) =>
+  el.addEventListener("click", (e) => {
+    calculator.updateFirstOperand(e.target.textContent);
+
+    calculator.populateDOM(outputMain as HTMLDivElement);
+  })
+);
