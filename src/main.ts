@@ -1,3 +1,5 @@
+import "./style.css";
+
 const CalcFactory = () => {
   return {
     firstOperand: 0,
