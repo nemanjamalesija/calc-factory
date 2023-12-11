@@ -1,4 +1,5 @@
 import CalcFactory from "./factories/calculatorFactory";
+import DomFactory from "./factories/domFactory";
 import OperatorFactory from "./factories/operatorFactory";
 import "./style.css";
 
@@ -9,14 +10,13 @@ const operations = document.querySelectorAll(".btn__operation");
 
 const calculator = new CalcFactory();
 const operator = new OperatorFactory();
-
-console.log(calculator);
+const domUpdater = new DomFactory();
 
 btns.forEach((el) =>
   el.addEventListener("click", (e: any) => {
     calculator.updateFirstOperand(e.target!.textContent as string);
 
-    calculator.populateDOM(
+    domUpdater.populateDOM(
       outputMain as HTMLDivElement,
       calculator.firstOperand,
       ""
@@ -30,13 +30,13 @@ operations?.forEach((el) =>
       calculator.updateSecondOperand(Number(calculator.firstOperand));
       calculator.setOperation(e.target.textContent);
 
-      calculator.populateDOM(
+      domUpdater.populateDOM(
         outputSecondary as HTMLDivElement,
         calculator.secondOperand,
         calculator.operation
       );
 
-      calculator.populateDOM(outputMain as HTMLDivElement, "0", "");
+      domUpdater.populateDOM(outputMain as HTMLDivElement, "0", "");
     } else if (
       calculator.operation &&
       calculator.firstOperand &&
@@ -45,24 +45,24 @@ operations?.forEach((el) =>
       calculator.computeResult(operator.operate.bind(operator));
       calculator.updateSecondOperand(calculator.result as number);
 
-      calculator.populateDOM(
+      domUpdater.populateDOM(
         outputSecondary as HTMLDivElement,
         calculator.result,
         e.target.textContent
       );
-      calculator.populateDOM(outputMain as HTMLDivElement, 0, "");
+      domUpdater.populateDOM(outputMain as HTMLDivElement, 0, "");
       calculator.setOperation(e.target.textContent);
     } else {
       calculator.computeResult(operator.operate.bind(operator));
       calculator.updateSecondOperand(calculator.result as number);
 
-      calculator.populateDOM(
+      domUpdater.populateDOM(
         outputSecondary as HTMLDivElement,
         calculator.result,
         e.target.textContent
       );
 
-      calculator.populateDOM(outputMain as HTMLDivElement, 0, "");
+      domUpdater.populateDOM(outputMain as HTMLDivElement, 0, "");
       calculator.setOperation("");
     }
   })

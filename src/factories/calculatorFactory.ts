@@ -5,14 +5,6 @@ export default function CalcFactory() {
   this.result = 0;
 }
 
-CalcFactory.prototype.populateDOM = function (
-  el: HTMLDivElement,
-  val: string | number,
-  operation: string
-) {
-  el.textContent = `${val} ${operation || ""}`;
-};
-
 CalcFactory.prototype.updateFirstOperand = function (val: string) {
   this.firstOperand += val;
 };
