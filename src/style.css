@@ -105,3 +105,21 @@ body {
   font-size: 1.6rem;
   color: #666;
 }
+
+.container {
+  width: 200px;
+}
+
+.heading {
+  background-color: red;
+}
+
+p {
+  background-color: green;
+  border-bottom: 1px solid #fff;
+}
+
+button {
+  display: inline-block;
+  background-color: yellow;
+}
