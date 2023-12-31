@@ -303,7 +303,7 @@ const user = {
     },
   ],
 
-  recentPosts: [
+  posts: [
     {
       id: crypto.randomUUID(),
       postText: "Danas se osjecam kao Knez mihajlova",
