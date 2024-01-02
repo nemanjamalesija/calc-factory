@@ -380,3 +380,10 @@ const user = {
     },
   ],
 };
+
+setTimeout(() => {
+  this.items = [
+    { body: "Scoped Slots Guide", username: "Evan You", likes: 20 },
+    { body: "Vue Tutorial", username: "Natalia Tepluhina", likes: 10 },
+  ];
+}, 1000);
